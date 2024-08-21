@@ -6,7 +6,6 @@ import * as CONFIG from '../config.js';
 export class Player extends Phaser.GameObjects.Container {
   #keyboardInputComponent;
   #horizontalMovementComponent;
-  #verticalMovementComponent;
   #shipSprite;
   #shipEngineSprite;
   #shipEngineThrusterSprite;
@@ -33,11 +32,6 @@ export class Player extends Phaser.GameObjects.Container {
       this.#keyboardInputComponent,
       CONFIG.PLAYER_MOVEMENT_HORIZONTAL_VELOCITY
     );
-    this.#verticalMovementComponent = new VerticalMovementComponent(
-      this,
-      this.#keyboardInputComponent,
-      CONFIG.PLAYER_MOVEMENT_VERTICAL_VELOCITY
-    );
 
 
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
@@ -53,6 +47,5 @@ export class Player extends Phaser.GameObjects.Container {
   update(ts, dt) {
     this.#keyboardInputComponent.update();
     this.#horizontalMovementComponent.update();
-    this.#verticalMovementComponent.update();
   }
 }
